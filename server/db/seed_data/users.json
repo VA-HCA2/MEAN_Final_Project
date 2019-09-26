@@ -1,0 +1,26 @@
+[
+    {
+        "username": "test",
+        "email": "test@yahoo.com",
+        "password": "123456",
+        "is_admin":1
+    },
+    {
+        "username": "Sofia",
+        "email": "sofia@yahoo.com",
+        "password": "123456",
+        "is_admin":0
+    },
+    {
+        "username": "sundaytest",
+        "email": "sundaytest@yahoo.com",
+        "password": "1234",
+        "is_admin":0
+    },
+    {
+        "username": "pauarce",
+        "email": "alejarce12@yahoo.com",
+        "password": "123456",
+        "is_admin":1
+    }
+]
