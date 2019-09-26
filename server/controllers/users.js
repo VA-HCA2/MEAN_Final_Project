@@ -87,25 +87,25 @@ Controller.deleteUser = (req, res) => {
 
 Controller.login = (req, res) => {
     userService.login({
-            username: req.body.username,
-            password:req.body.password
-        })
-        .then((user) => {
-            if(user === null){
-                res.status(400)
-                res.end('Invalid credentials');
-            }
-                else { 
-                req.session.username=user.username;
-                req.session.is_admin=user.is_admin;
-                res.json(user);     
+        username: req.body.username,
+        password:req.body.password
+    })
+    .then((user) => {
+        if(user === null){
+            res.status(400)
+            res.end('Invalid credentials');
         }
-        })
-        .catch((err) => {
-            console.log(`Error loging in: ${err}`);
-            res.status(500)
-            res.end('Error Loging in.');
-        });
+            else { 
+            req.session.username=user.username;
+            req.session.is_admin=user.is_admin;
+            res.json(user);     
+    }
+    })
+    .catch((err) => {
+        console.log(`Error loging in: ${err}`);
+        res.status(500)
+        res.end('Error Loging in.');
+    });
 };
 
 module.exports = Controller;

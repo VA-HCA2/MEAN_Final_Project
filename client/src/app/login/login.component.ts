@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
           this.userService.setAuthStatus(false);
         } else {
           this.userService.setAuthStatus(true);
-          this.router.navigate(['/']); //check and change route 
+          this.router.navigate(['/']); //check and change route !!!!!
         }
       });
     }
