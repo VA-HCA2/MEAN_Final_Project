@@ -5,7 +5,6 @@ var api = require('../controllers/users');
 
 const authorization = require('./../utils/auth');
 
-
 // POST: http://localhost:3000/users/register/
 router.post('/register/', api.register);
 
