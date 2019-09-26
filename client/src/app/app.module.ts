@@ -11,10 +11,12 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 
 import { UserService } from './providers/user.service';
+import { LoginComponent } from './login/login.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}
 ];
 
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     HomeComponent,
     NavComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

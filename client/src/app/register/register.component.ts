@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
           this.errMsg = 'Registration unsuccessful.';
           this.error = true;
         } else {
-          this.router.navigate(['/']); // change to login
+          this.router.navigate(['/login']); 
         }
       });
     }
