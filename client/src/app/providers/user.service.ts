@@ -17,8 +17,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  login(userName: string, password: string) {
-    return this.http.post(`${this.usersEndpoint}login`, {userName : userName, userPassword : password}, this.httpOptions)
+  login(username: string, password: string) {
+    return this.http.post(`${this.usersEndpoint}login`, {username : username, password : password}, this.httpOptions)
       .pipe(map(res => <any[]>res));
   }
 
