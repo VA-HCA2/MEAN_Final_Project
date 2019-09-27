@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
+import { FormBuilder, FormGroup} from '@angular/forms';
+import { Leagues } from '../models/leagues.model';
+
 import { UserService } from './../providers/user.service';
-import { $ } from 'protractor';
+
 @Component({
   selector: 'app-leagues',
   templateUrl: './leagues.component.html',
@@ -8,7 +12,25 @@ import { $ } from 'protractor';
 })
 
 export class LeaguesComponent {
+// dinamically create 
+  form: FormGroup;
+  leagues = [];
 
+  constructor(private userService: UserService) {
+  }
+
+getLeagues() {
+  this.userService.getLeagues().subscribe(data => {
+    data.forEach((league, index) => {
+      this.leagues.push(new Leagues(league.Name));
+    })
+  });
+}
+
+submit() {
+  console.log(this.form.value);
+}
+/// 
   private selectedLink: string="searchLeagues";
 
   private isTeamsSelected = false;
@@ -25,7 +47,9 @@ export class LeaguesComponent {
     }
 
     if (val === 'leagues') {
+      console.log('***');
       this.isLeaguesSelected = true;
+      this.getLeagues();
     }
 
     else{
@@ -42,6 +66,8 @@ export class LeaguesComponent {
   
         return (this.selectedLink === name); // if current radio button is selected, return true, else return false  
     }  
+
+
   
 }  
 
