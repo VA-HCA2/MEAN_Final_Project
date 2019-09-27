@@ -40,28 +40,27 @@ Controller.listUser = (req, res) => {
 // POST: http://localhost:3000/users/register/
 Controller.register = (req, res) => {
     userService.register({
-            username: req.body.username,
-            email: req.body.email,
-            password:req.body.password
-        })
-        .then((user) => { 
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    })
+        .then((user) => {
             res.json(user);
         })
         .catch((err) => {
             console.log(`Creating User error: ${err}`);
-            res.status(403).end('Creating User error.');
+            res.json({ 'error': 'Creating User error.' });
         });
 };
-
 
 // PUT: http://localhost:3000/users/
 
 Controller.updateUser = (req, res) => {
     let userId = req.params.id
     userService.update(userId, {
-            username: req.body.username,
-            email: req.body.email,
-        })
+        username: req.body.username,
+        email: req.body.email,
+    })
         .then((user) => {
             res.json(user);
         })
@@ -69,7 +68,7 @@ Controller.updateUser = (req, res) => {
             console.log(`Updating User error: ${err}`);
             res.end('Updating User error.');
         });
-}; 
+};
 
 // DELETE: http://localhost:3000/users/{user_id} 
 Controller.deleteUser = (req, res) => {
@@ -88,24 +87,26 @@ Controller.deleteUser = (req, res) => {
 Controller.login = (req, res) => {
     userService.login({
         username: req.body.username,
-        password:req.body.password
+        password: req.body.password
     })
-    .then((user) => {
-        if(user === null){
-            res.status(400)
-            res.end('Invalid credentials');
-        }
-            else { 
-            req.session.username=user.username;
-            req.session.is_admin=user.is_admin;
-            res.json(user);     
-    }
-    })
-    .catch((err) => {
-        console.log(`Error loging in: ${err}`);
-        res.status(500)
-        res.end('Error Loging in.');
-    });
+        .then((user) => {
+            if (user) {
+                 {
+                    req.session.username = user.username;
+                    req.session.is_admin = user.is_admin;
+                    res.json(user);
+                 }
+            }    
+         else {
+                    res.json({ "error": "No User found" });
+                }   
+        })
+        .catch((err) => {
+            console.log(`Error loging in: ${err}`);
+            res.status(500)
+            res.end('Error Loging in.');
+        });
+
 };
 
 module.exports = Controller;
