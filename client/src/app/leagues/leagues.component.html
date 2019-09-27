@@ -1,0 +1,57 @@
+    <main>
+        <div class="container col-md-7">
+            <!--Start of Form-->
+            <form class="form " autocomplete="off" method="GET">
+                <!-- Radio buttons for search-->
+                <section>
+                    <div class="text-center formBorder col-md-12">
+                        <label class="font-weight-bold  filterTitle">Filter Teams</label>
+                    
+                        <!--Radio Buttons-->
+                        <div class="custom-control custom-radio ">
+                            <input type="radio" id="searchLeagues" name="optionBtn" class="custom-control-input" value="searchLeagues" [checked]='true' ngModel (click)="setradio('leagues')">
+                            <label class="custom-control-label " for="searchLeagues">Search by Leagues</label>
+                        </div>
+                        <div class="custom-control custom-radio ">
+                            <input type="radio" id="searchTeams" name="optionBtn" class="custom-control-input" value="searchTeams" ngModel (click)="setradio('teams')">
+                            <label class="custom-control-label" for="searchTeams">Search by Teams</label>
+                        </div>
+                        <br>
+                        <!--Search Button-->
+                        <button id="showAll" type="button" class="btn btn-primary mt-3 ">Show All </button>
+                    </div>
+                </section>
+                <!--  Search by Leagues dropdowns-->
+                <section>
+                    <div class=" col-md-5 mx-auto " *ngIf="isLeaguesSelected">
+                        <div class=" font-weight-bold select1 leaguesdiv  mt-5">
+                            <label for="leaguesddl">Select League</label>
+                            <select class="custom-select d-block w-100 " id="leaguesddl" name="leaguesddl">
+                                <option value="select a Location" selected disabled>Please select a League</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--  Search by Teams dropdowns-->
+                    <div class=" col-md-5 mx-auto" *ngIf="isTeamsSelected">
+                        <div class=" font-weight-bold select1 teamsdiv mt-5" >
+                            <label for="teamddl">Select Teams</label>
+                            <select class="custom-select d-block w-100 " id="teamddl" name="teamddl">
+                                <option value="select a Team" selected disabled>Please select a Team</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+                <!--Table-->
+                <section>
+                    <table class=" table-striped container table table-sm col-12 table-bordered mt-5">
+                        <thead id="teamHeader" class="font-weight-bold bg-dark text-white">
+                        </thead>
+                        <tbody id="teamTable">
+                        </tbody>
+                    </table>
+                    <!--End of Table-->
+                </section>
+            </form>
+        </div>
+    </main>

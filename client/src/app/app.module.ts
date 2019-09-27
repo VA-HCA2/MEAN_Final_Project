@@ -12,12 +12,14 @@ import { RegisterComponent } from './register/register.component';
 
 import { UserService } from './providers/user.service';
 import { LoginComponent } from './login/login.component';
+import { LeaguesComponent } from './leagues/leagues.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'leagues', component: LeaguesComponent}
 ];
 
 @NgModule({
@@ -27,7 +29,8 @@ const appRoutes: Routes = [
     NavComponent,
     FooterComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LeaguesComponent
   ],
   imports: [
     BrowserModule,

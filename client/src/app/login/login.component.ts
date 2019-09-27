@@ -35,12 +35,12 @@ export class LoginComponent implements OnInit {
       // Call UserService to authenticate
       this.userService.login(this.username, this.password).subscribe(data => {
         if (data['error']) {
-          this.errMsg = 'Login unsuccessful.';
+          this.errMsg = 'Invalid Credentials. Please try again ';
           this.error = true;
           this.userService.setAuthStatus(false);
         } else {
           this.userService.setAuthStatus(true);
-          this.router.navigate(['/']); //check and change route !!!!!
+          this.router.navigate(['/leagues']); 
         }
       });
     }

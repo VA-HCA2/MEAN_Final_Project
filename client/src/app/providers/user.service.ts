@@ -11,7 +11,7 @@ export class UserService {
 	private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
-    })
+    }),
   };
   private authenticated: boolean = false;
 
@@ -41,11 +41,11 @@ export class UserService {
     return this.http.post(`${this.usersEndpoint}${userId}`, {userName : userName, userEmail : email, userPassword : password},this.httpOptions )
   }
 
-  setAuthStatus(status: boolean) {
-    this.authenticated = status;
+  setAuthStatus(authenticated: boolean): void {
+    this.authenticated = authenticated
   }
 
-  getAuthStatus() {
+  getAuthStatus(): boolean {
     return this.authenticated;
   }
 }
