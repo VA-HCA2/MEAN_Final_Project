@@ -49,8 +49,4 @@ export class UserService {
     return this.authenticated;
   }
 
-  getLeagues() {
-    return this.http.get('http://localhost:3000/leagues/data', this.httpOptions)
-    .pipe(map(res => <any[]>res));
-  }
 }
