@@ -37,16 +37,22 @@ export class UserService {
     .pipe(map(res => <any[]>res));
   }
 
-  editUsers(userId: number,userName: string, email: string, password: string ){
-    return this.http.post(`${this.usersEndpoint}${userId}`, {userName : userName, userEmail : email, userPassword : password},this.httpOptions )
+  getUser(userId: number) : Observable<any> {
+    return this.http.get(`${this.usersEndpoint}/${userId}`, this.httpOptions)
+    .pipe(map(res => <any[]>res));
   }
 
-  setAuthStatus(authenticated: boolean): void {
-    this.authenticated = authenticated
+  editUsers(userId: number, email: string,): Observable<any>{
+    return this.http.put(`${this.usersEndpoint}edit/${userId}`, {email : email},this.httpOptions )
+    .pipe(map(res => <any[]>res));
+  }
+
+  setAuthStatus(isAuth: boolean): void {
+    this.authenticated = isAuth;
   }
 
   getAuthStatus(): boolean {
-    return this.authenticated;
+    return this.authenticated
   }
 
 }

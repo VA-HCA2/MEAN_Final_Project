@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 import { League } from '../models/league.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LeaguesService } from './../providers/leagues.service';
 import { TeamsService } from './../providers/teams.service';
+import { UserService } from './../providers/user.service';
 import { Team } from '../models/team.models';
 
 @Component({
@@ -16,15 +17,21 @@ import { Team } from '../models/team.models';
 export class LeaguesComponent {
   // dinamically create 
   form: FormGroup;
+  username: string = '';
+  password: string = ''
   teams = [];
   leagues = [];
 
+  private sub: any;
+  private userId;
+
   constructor(private LeaguesService: LeaguesService,
     private teamsService: TeamsService,
+    private route: ActivatedRoute,
     private router: Router) {
   }
 
-// Dropdown for Leagues 
+//Dropdown for Leagues 
   getLeagues() {
     this.LeaguesService.getLeagues().subscribe(data => {
       data.forEach((league, index) => {
@@ -76,8 +83,9 @@ export class LeaguesComponent {
 
     return (this.selectedLink === name); // if current radio button is selected, return true, else return false  
   }
-
+  
 }
+
 
 
 

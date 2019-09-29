@@ -10,6 +10,7 @@ import { UserService } from './../providers/user.service';
 })
 export class LoginComponent implements OnInit {
   pageTitle = 'Login';
+  userid: number = 0;
   username: string = '';
   password: string = '';
 
@@ -40,7 +41,8 @@ export class LoginComponent implements OnInit {
           this.userService.setAuthStatus(false);
         } else {
           this.userService.setAuthStatus(true);
-          this.router.navigate(['/leagues']); 
+          this.router.navigate(['/leagues'], { queryParams: { userid: data['ID'] }}); 
+          console.log(data)
         }
       });
     }
