@@ -25,10 +25,9 @@
                 <div class=" col-md-5 mx-auto " *ngIf="isLeaguesSelected">
                     <div class=" font-weight-bold select1 leaguesdiv  mt-5">
                         <label for="searchLeagues" >Select League</label>
-                        <select class="custom-select d-block w-100 " id="searchLeagues" name="searchLeagues" >
+                        <select class="custom-select d-block w-100 " id="searchLeagues" name="searchLeagues" (change)='onLeaguesChange($event.target.value)'>
                             <option value="select a League" selected disabled>Please select a League</option>
-                            <option *ngFor="let league of leagues" value="{{league.Code}}">
-                            {{league.Name}}</option>
+                            <option ng-model="selectedName"*ngFor="let league of leagues" value="">{{league.Name}}</option>
                         </select>
                     </div>
                 </div>
@@ -57,11 +56,12 @@
                                     </tr>
                                 </thead>
                     <tbody id="teamTable">
-                            <tr>
-                                    <!-- <td>{{team.Name}}</td>
+                     
+                            <tr *ngFor="let team of teams">
+                                    <td>{{team.Name}}</td>
                                     <td>{{team.ManagerName}}</td>
-                                    <td>{{team.ManagerPhone}}</td> -->
-                            </tbody>
+                                    <td>{{team.ManagerPhone}}</td>
+                         </tbody>
                 </table>
                 <!--End of Table-->
             </section>

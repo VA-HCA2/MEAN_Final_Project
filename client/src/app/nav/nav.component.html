@@ -10,6 +10,6 @@
         <a *ngIf="!isAuth()" class="p-3 navLinks" (click)="onLogin()">Login</a>
         <a *ngIf="isAuth()" class="p-3 navLinks" (click)="onLogOut()">Logout</a>
         <a *ngIf="isAuth()" class="p-3 navLinks" (click)="onEdit()">Edit Profile</a>
-        <a class="p-3 navLinks" href="/users/admin/" id="admin">Admin</a>
+        <a *ngIf="isAuth() && isAdmin()"class="p-3 navLinks" (click)="onAdmin()">Admin</a>
     </div>
 </nav>

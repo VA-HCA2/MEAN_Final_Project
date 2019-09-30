@@ -18,6 +18,7 @@ import { TeamsService } from './providers/teams.service';
 import { LoginComponent } from './login/login.component';
 import { LeaguesComponent } from './leagues/leagues.component';
 import { EditComponent } from './edit/edit.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 const appRoutes: Routes = [
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'leagues', component: LeaguesComponent},
-  {path: 'edit', component: EditComponent}
+  {path: 'edit', component: EditComponent},
+  {path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     LoginComponent,
     LeaguesComponent,
     EditComponent,
+    AdminComponent,
   ],
   imports: [
     ReactiveFormsModule,

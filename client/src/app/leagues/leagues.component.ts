@@ -14,40 +14,73 @@ import { Team } from '../models/team.models';
   styleUrls: ['./leagues.component.css']
 })
 
-export class LeaguesComponent {
+export class LeaguesComponent implements OnInit {
   // dinamically create 
   form: FormGroup;
   username: string = '';
   password: string = ''
-  teams = [];
+  teams : Array<Team> = [];
   leagues = [];
 
   private sub: any;
   private userId;
-
+  private id;
+  
   constructor(private LeaguesService: LeaguesService,
     private teamsService: TeamsService,
     private route: ActivatedRoute,
+    private userService: UserService,
     private router: Router) {
   }
-
-//Dropdown for Leagues 
-  getLeagues() {
+// If user is not auth redirect it to login page
+  // ngOnInit() {
+  //   if (!this.userService.getAuthStatus()) {
+  //     this.router.navigate(['login']);
+  //   }
+  // }
+  ngOnInit() {
+    console.log('!!!***');
     this.LeaguesService.getLeagues().subscribe(data => {
       data.forEach((league, index) => {
         this.leagues.push(new League(league.Name, league.Code,league.Description));
       })
+      console.log(this.leagues);
     });
   }
 
-// Dropdown for Teams
-  getTeams(){
-    this.teamsService.getTeams().subscribe(data => {
-      data.forEach((team, index) => {
-        this.teams.push(new Team (team.TeamName,team.ManagerName,team.ManagerPhone));
+
+//Dropdown for Leagues 
+/*
+  getLeagues() {
+    console.log('***');
+    this.LeaguesService.getLeagues().subscribe(data => {
+      data.forEach((league, index) => {
+        this.leagues.push(new League(league.Name, league.Code,league.Description));
       })
+      console.log(this.leagues);
     });
   }
+  */
+  
+  onLeaguesChange(val){
+    this.teams=[];
+    this.LeaguesService.getTeamsForLeagues(val).subscribe(data=> {
+      data.forEach((team, index) => {
+        this.teams.push(new Team(team.Name, team.ManagerName,team.ManagerPhone));
+    })
+    console.log(this.teams);
+  });
+}
+
+
+// Dropdown for Teams
+  // getTeams(){
+  //   this.LeaguesService.getLeagues().subscribe(data => {
+  //     data.forEach((team, index) => {
+  //       this.teams.push(new Team (team.TeamName,team.ManagerName,team.ManagerPhone));
+  //     })
+  //   });
+  // }
   
   // Filter radio buttons 
   private selectedLink: string = "searchLeagues";
@@ -56,7 +89,7 @@ export class LeaguesComponent {
   setradio(val: string): void {
     if (val === 'teams') {
       this.isTeamsSelected = true;
-      this.getTeams();
+      //this.getTeams();
     }
 
     else {
@@ -65,7 +98,7 @@ export class LeaguesComponent {
 
     if (val === 'leagues') {
       this.isLeaguesSelected = true;
-      this.getLeagues();
+      //this.getLeagues();
 
     }
 

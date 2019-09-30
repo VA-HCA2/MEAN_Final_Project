@@ -26,6 +26,10 @@ export class NavComponent implements OnInit {
   isAuth(): boolean {
     return this.userService.getAuthStatus();
   }
+  
+  isAdmin(): boolean {
+    return this.userService.getIsAdminStatus();
+  }
 
   onIndex(): void {
     this.router.navigate(['/']);
@@ -48,5 +52,9 @@ export class NavComponent implements OnInit {
     })
   }
 
-
+  onAdmin(): void {
+    this.router.navigate(['/admin'],{
+    queryParams: { userid: this.userid }
+    })
+  }
 }
