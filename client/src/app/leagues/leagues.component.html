@@ -4,45 +4,8 @@
         <form class="form " autocomplete="off" method="GET" >
             <!-- Radio buttons for search-->
             <section>
-                <div class="text-center formBorder col-md-12">
-                    <label class="font-weight-bold  filterTitle">Filter Teams</label>
-                
-                    <!--Radio Buttons-->
-                    <div class="custom-control custom-radio ">
-                        <input type="radio" id="searchLeagues" name="optionBtn" class="custom-control-input" value="searchLeagues" (click)="setradio('leagues')">
-                        <label class="custom-control-label " for="searchLeagues">Search by Leagues</label>
-                    </div>
-                    <div class="custom-control custom-radio ">
-                        <input type="radio" id="searchTeams" name="optionBtn" class="custom-control-input" value="searchTeams" (click)="setradio('teams')">
-                        <label class="custom-control-label" for="searchTeams">Search by Teams</label>
-                    </div>
-                    <br>
-                </div>
-            </section>
-
-            <!--  Search by Leagues dropdowns-->
-            <section>
-                <div class=" col-md-5 mx-auto " *ngIf="isLeaguesSelected">
-                    <div class=" font-weight-bold select1 leaguesdiv  mt-5">
-                        <label for="searchLeagues" >Select League</label>
-                        <select class="custom-select d-block w-100 " id="searchLeagues" name="searchLeagues" (change)='onLeaguesChange($event.target.value)'>
-                            <option value="select a League" selected disabled>Please select a League</option>
-                            <option ng-model="selectedName"*ngFor="let league of leagues" value="">{{league.Name}}</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!--  Search by Teams dropdowns-->
-                <div class=" col-md-5 mx-auto" *ngIf="isTeamsSelected">
-                    <div class=" font-weight-bold select1 teamsdiv mt-5" >
-                        <label for="searchTeams">Select Teams</label>
-                        <select class="custom-select d-block w-100 " id="searchTeams" name="searchTeams" >
-                            <option value="select a Team" selected disabled>Please select a Team</option>
-                            <option *ngFor="let team of teams" value=""> 
-                                    {{team.Name}}
-                                    </option>
-                        </select>
-                    </div>
+                <div class="text-center col-md-12">
+                    <label class="font-weight-bold  filterTitle">Teams</label>
                 </div>
             </section>
             <!--Table-->
@@ -58,7 +21,7 @@
                     <tbody id="teamTable">
                      
                             <tr *ngFor="let team of teams">
-                                    <td>{{team.Name}}</td>
+                                    <td>{{team.TeamName}}</td>
                                     <td>{{team.ManagerName}}</td>
                                     <td>{{team.ManagerPhone}}</td>
                          </tbody>

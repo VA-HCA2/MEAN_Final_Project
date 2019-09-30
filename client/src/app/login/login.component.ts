@@ -40,6 +40,12 @@ export class LoginComponent implements OnInit {
           this.error = true;
           this.userService.setAuthStatus(false);
         }
+        else if (data['is_admin'])
+       {
+          this.userService.setAdminStatus(true);
+          this.userService.setAuthStatus(true);
+          this.router.navigate(['/leagues'], { queryParams: { userid: data['ID'] } });
+        }
         else {
           this.userService.setAuthStatus(true);
           this.router.navigate(['/leagues'], { queryParams: { userid: data['ID'] }}); 

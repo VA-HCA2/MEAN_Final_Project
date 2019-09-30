@@ -12,15 +12,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr *ngFor="let user of users">
+                    <tr *ngFor="let user of users">
                         <td>{{user.username}}</td>
-                        <td>{{user.email}}</td> 
-                    </tr>-->
+                        <td>{{user.email}}</td>
                 </tbody>
             </table>
             <!--End of Table-->
-            <a href="" class="btn btn-info active" role="button" aria-pressed="true" id="returnAdminBtn">Go
-                Back</a>
+            <button class="btn btn-info active" type="button"  (click)= "goBack()">Go Back</button> 
         </section>
     </div>
 </main>

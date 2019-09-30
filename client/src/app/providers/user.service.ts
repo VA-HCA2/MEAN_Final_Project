@@ -34,7 +34,7 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get(`${this.usersEndpoint}admin/`, this.httpOptions)
+    return this.http.get(`${this.usersEndpoint}admin/list`, this.httpOptions)
     .pipe(map(res => <any[]>res));
   }
 

@@ -12,6 +12,7 @@
   .navLinks {
     color: rgb(51, 51, 116);
     font-size: 18px;
+    cursor: pointer
   }
   
   .title {

@@ -11,10 +11,7 @@ import { User } from '../models/user.model';
 export class AdminComponent implements OnInit {
 
   sub: any;
-
   userid: number = 0;
-
-  // Array to hold Users Objects
   users: Array<User> = [];
 
   constructor(
@@ -35,16 +32,18 @@ export class AdminComponent implements OnInit {
         this.userid = params['userid'];
       });
 
-  //    this.userService.getUsers().subscribe(data => {
-  //     data.forEach((user, index) => {
-  //        this.users.push(new User(user.ID, user.username, user.email, user.password));
-  //      })
-  //  });
-
-    // getUsers() method in User Service
     this.userService.getUsers().subscribe(data => {
-      this.users = data;
+      console.log(data)
+      data.forEach((user, index) => {
+        this.users.push(new User(user.ID, user.username, user.email, user.password));
+      })
     });
   }
+
+  goBack(): void {
+    this.router.navigate(['leagues'], {
+      queryParams: { userid: this.userid }
+    })
   }
+}
 

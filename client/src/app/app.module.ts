@@ -13,7 +13,6 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 
 import { UserService } from './providers/user.service';
-import { LeaguesService } from './providers/leagues.service';
 import { TeamsService } from './providers/teams.service';
 import { LoginComponent } from './login/login.component';
 import { LeaguesComponent } from './leagues/leagues.component';
@@ -51,7 +50,7 @@ const appRoutes: Routes = [
   ],
   providers: [UserService,
   TeamsService,
-  LeaguesService],
+ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

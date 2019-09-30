@@ -1,15 +1,15 @@
   // Create User Model Class
 export class User {
     // properties
-    public userId: number;
-    public userName: string = '';
-    public emailAddress: string = '';
+    public ID: number;
+    public username: string = '';
+    public email: string = '';
     public password: string = '';
     
-    constructor(userId: number, userName: string, emailAddress: string, password: string) {
-      this.userId = userId;
-      this.userName = userName;
-      this.emailAddress = emailAddress;
+    constructor(ID: number, username: string, email: string, password: string) {
+      this.ID = ID;
+      this.username = username;
+      this.email = email;
       this.password = password;
     }
   }
