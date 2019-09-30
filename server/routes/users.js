@@ -20,7 +20,7 @@ router.post('/login',api.login)
 // GET: http://localhost:3000/users
 router.get('/admin/list', api.list);
 
-// GET: http://localhost:3000/users/:id
+// GET: http://localhost:3000/user/:id
 router.get('/:id', api.listUser);
 
 // LOGOUT: 

@@ -4,12 +4,12 @@
     <a class="title my-0 mr-md-auto font-weight-normal text-decoration-none title" href="/">Soccer
         Academy</a>
     <div class="my-2 my-md-0 mr-md ">
-        <a class="p-3 navLinks" href="/" id="home">Home</a>
-        <a class="p-3 navLinks" href="/leagues" id="leagues">Leagues</a>
-        <a class="p-3 navLinks" href="/register"id="register">Register</a>
-        <a class="p-3 navLinks" href="/login" id="login">Login</a>
-        <a class="p-3 navLinks" href="/users/logout" id="logout">Logout</a>
-        <a class="p-3 navLinks" href="/users/edit/" id="edit">Edit Profile</a>
-         <a class="p-3 navLinks" href="/users/admin/" id="admin">Admin</a>
+        <a class="p-3 navLinks" (click)="onIndex()">Home</a>
+        <a *ngIf="isAuth()" class="p-3 navLinks" href="/leagues" id="leagues">Leagues</a>
+        <a *ngIf="!isAuth()" class="p-3 navLinks" (click)="onRegister()">Register</a>
+        <a *ngIf="!isAuth()" class="p-3 navLinks" (click)="onLogin()">Login</a>
+        <a *ngIf="isAuth()" class="p-3 navLinks" (click)="onLogOut()">Logout</a>
+        <a *ngIf="isAuth()" class="p-3 navLinks" (click)="onEdit()">Edit Profile</a>
+        <a class="p-3 navLinks" href="/users/admin/" id="admin">Admin</a>
     </div>
 </nav>
