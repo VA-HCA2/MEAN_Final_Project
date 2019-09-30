@@ -44,6 +44,7 @@ export class NavComponent implements OnInit {
 
   onLogOut(): void {
     this.userService.setAuthStatus(false);
+    this.userService.setAdminStatus(false);
     this.router.navigate(['/']);
   }
   onEdit(): void {

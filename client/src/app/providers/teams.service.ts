@@ -16,7 +16,7 @@ export class TeamsService {
     }),
   };
   constructor(private http: HttpClient) { }
-  getTeams(): Observable<any> {
+  getTeams(){
     return this.http.get('http://localhost:3000/teams/data', this.httpOptions)
       .pipe(map(res => <any[]>res));
   }

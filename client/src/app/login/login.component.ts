@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
 
+
   error: boolean = false;
   errMsg: string = '';
   
@@ -40,15 +41,22 @@ export class LoginComponent implements OnInit {
           this.error = true;
           this.userService.setAuthStatus(false);
         }
+        // If it's admin set admin and auth status to true and navigate the user to leagues page 
+        else if (data['is_admin'])
+       {
+          this.userService.setAdminStatus(true);
+          this.userService.setAuthStatus(true);
+          this.router.navigate(['/leagues'], { queryParams: { userid: data['ID'] } });
+        }
+        // If it's auth login and navigate the user to leagues page 
         else {
           this.userService.setAuthStatus(true);
           this.router.navigate(['/leagues'], { queryParams: { userid: data['ID'] }}); 
-          console.log(data)
         }
       });
     }
   }
-
+ // On reset functionality 
   onReset(): void {
     this.username = '';
     this.password = '';

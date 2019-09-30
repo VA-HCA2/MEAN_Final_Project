@@ -11,10 +11,8 @@ import { User } from '../models/user.model';
 export class AdminComponent implements OnInit {
 
   sub: any;
-
   userid: number = 0;
-
-  // Array to hold Users Objects
+  // Array for users 
   users: Array<User> = [];
 
   constructor(
@@ -24,9 +22,8 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-     if (!this.userService.getAuthStatus() || !this.userService.getIsAdminStatus())
-     {
+    // Statement used if the user is not Auth and not an admin 
+    if (!this.userService.getAuthStatus() && !this.userService.getIsAdminStatus()) {
       this.router.navigate(['/']);
     }
     this.sub = this.route
@@ -35,16 +32,19 @@ export class AdminComponent implements OnInit {
         this.userid = params['userid'];
       });
 
-  //    this.userService.getUsers().subscribe(data => {
-  //     data.forEach((user, index) => {
-  //        this.users.push(new User(user.ID, user.username, user.email, user.password));
-  //      })
-  //  });
-
-    // getUsers() method in User Service
+     // Show non admin users on the table  
     this.userService.getUsers().subscribe(data => {
-      this.users = data;
+      data.forEach((user, index) => {
+        this.users.push(new User(user.ID, user.username, user.email, user.password));
+      })
     });
   }
+
+  //Go back button on click navigate to leagues page  
+  goBack(): void {
+    this.router.navigate(['leagues'], {
+      queryParams: { userid: this.userid }
+    })
   }
+}
 

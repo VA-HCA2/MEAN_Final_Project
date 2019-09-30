@@ -4,7 +4,7 @@
         <label class="font-weight-bold  filterTitle">Users</label>
         <!--Table-->
         <section>
-            <table class=" table-striped container table table-sm col-5 table-bordered mt-5">
+            <table class=" table-striped container table table-sm table-bordered mt-5">
                 <thead id="usersHeader" class="font-weight-bold bg-dark text-white">
                     <tr>
                         <th>User Name</th>
@@ -12,15 +12,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr *ngFor="let user of users">
+                    <tr *ngFor="let user of users">
                         <td>{{user.username}}</td>
-                        <td>{{user.email}}</td> 
-                    </tr>-->
+                        <td>{{user.email}}</td>
                 </tbody>
             </table>
             <!--End of Table-->
-            <a href="" class="btn btn-info active" role="button" aria-pressed="true" id="returnAdminBtn">Go
-                Back</a>
+            <!-- Go back button-->
+            <button class="btn btn-info active" type="button"  (click)= "goBack()">Go Back</button> 
         </section>
     </div>
 </main>

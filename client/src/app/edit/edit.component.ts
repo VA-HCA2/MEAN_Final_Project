@@ -10,7 +10,6 @@ import { UserService } from './../providers/user.service';
 export class EditComponent implements OnInit {
 
   sub: any;
-
   userid: number = 0;
   username: string = '';
   email: string = '';
@@ -25,29 +24,35 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // If user is not authorized navigate to home page
     if (!this.userService.getAuthStatus()) {
       this.router.navigate(['/']);
     }
 
-  this.sub = this.route
+    // Take userid 
+    this.sub = this.route
       .queryParams
       .subscribe(params => {
         this.userid = params['userid'];
       });
 
+      // Display username an email information on the page 
       this.userService.getUser(this.userid).subscribe(data => {
         this.username = data['username'];
         this.email = data['email'];
       })
     }
-
+ 
+    // On edit functionality 
  onEdit(): void{
+   // validation if email is not entered 
   if (this.email.trim() == '') {
     this.errMsg = 'Email Address required';
     this.error = true;
   } else {
     this.error = false;
     this.errMsg = '';
+    // Call edit users 
     this.userService.editUsers(this.userid,this.email).subscribe(data => {
       if (data['error']) {
         this.errMsg = 'Error unable to update';
@@ -60,7 +65,7 @@ export class EditComponent implements OnInit {
     });
   }
 }
-
+// Delete functionaliaty 
 onDelete():void{
   this.userService.deleteUser(this.userid).subscribe(data => {
     this.userService.setAuthStatus(false);
@@ -68,6 +73,7 @@ onDelete():void{
   });
 }
 
+// Go back functionality 
 goBack(): void {
   this.router.navigate(['leagues'], {
     queryParams: { userid: this.userid }
