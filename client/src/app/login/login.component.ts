@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
           this.errMsg = 'Invalid Credentials. Please try again ';
           this.error = true;
           this.userService.setAuthStatus(false);
-        } else {
+        }
+        else {
           this.userService.setAuthStatus(true);
           this.router.navigate(['/leagues'], { queryParams: { userid: data['ID'] }}); 
           console.log(data)

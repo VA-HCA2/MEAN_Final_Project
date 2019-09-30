@@ -14,6 +14,7 @@ export class UserService {
     }),
   };
   private authenticated: boolean = false;
+  private isAdmin: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -33,7 +34,7 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get(this.usersEndpoint, this.httpOptions)
+    return this.http.get(`${this.usersEndpoint}admin/`, this.httpOptions)
     .pipe(map(res => <any[]>res));
   }
 
@@ -55,4 +56,11 @@ export class UserService {
     return this.authenticated
   }
 
+  setAdminStatus(isAdmin: boolean): void {
+    this.isAdmin = isAdmin;
+  }
+
+  getIsAdminStatus(): boolean {
+    return this.isAdmin;
+  }
 }

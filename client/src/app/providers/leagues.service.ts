@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 export class LeaguesService {
 
   leagues: Array<string> = [];
+  private usersEndpoint: string = 'http://localhost:3000/';
 	private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -21,4 +22,8 @@ export class LeaguesService {
     .pipe(map(res => <any[]>res));
   }
 
+  getTeamsForLeagues(teamName: string) : Observable<any>{
+    return this.http.get(`${this.usersEndpoint}teams/data/${teamName}`,this.httpOptions)
+      .pipe(map(res => <any[]>res));
+  }
 }
