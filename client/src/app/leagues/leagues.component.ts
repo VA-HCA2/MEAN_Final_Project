@@ -27,7 +27,7 @@ export class LeaguesComponent implements OnInit {
 
   ngOnInit() {
     
-    // If user is not sigin in redirect to login page. 
+    // If user is not login redirect to login page. 
     if (!this.userService.getAuthStatus()) {
            this.router.navigate(['login']);
      }

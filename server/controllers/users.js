@@ -37,7 +37,7 @@ Controller.listUser = (req, res) => {
 };
 
 
-// POST: http://localhost:3000/users/register/
+// POST: http://localhost:3000/register/
 Controller.register = (req, res) => {
     userService.register({
         username: req.body.username,
@@ -53,7 +53,7 @@ Controller.register = (req, res) => {
         });
 };
 
-// PUT: http://localhost:3000/users/
+// PUT: http://localhost:3000/edit/id
 
 Controller.updateUser = (req, res) => {
     let userId = req.params.id

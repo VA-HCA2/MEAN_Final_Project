@@ -1,36 +1,36 @@
-    <main>
-        <section class="container col-md-5 formBorder mt-5">
-            <h1 class="mb-3 text-center filterTitle">Edit Profile</h1>
-            <hr class="mb-4">
-            <div class="row">
-                <div class="col-md-12">
-                    <form class="form " method="GET" id="editForm" autocomplete="off">
-
-                        <div class="form-group row">
-                            <label for="username" class="col-sm-4 col-form-label font-weight-bold">Username:</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="username" name="username"
-                                 autocomplete="off" value="username"  [(ngModel)]="username" readonly>
-                            </div>
+<main>
+    <section class="container col-md-5 formBorder mt-5">
+        <h1 class="mb-3 text-center filterTitle">Edit Profile</h1>
+        <hr class="mb-4">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Form-->
+                <form class="form " method="GET" id="editForm" autocomplete="off">
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-4 col-form-label font-weight-bold">Username:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="username" name="username" autocomplete="off"
+                                value="username" [(ngModel)]="username" readonly>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label font-weight-bold">Email:</label>
-                            <div class="col-sm-8">
-                                <input type="email" class="form-control" id="email" name="email" value=""
-                                    autocomplete="off" placeholder="Enter Email" [(ngModel)]="email" required autofocus>
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-4 col-form-label font-weight-bold">Email:</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" id="email" name="email" value="" autocomplete="off"
+                                placeholder="Enter Email" [(ngModel)]="email" required autofocus>
                         </div>
-
-                        <div class="text-center">
-                            <button id="editBtn" class="btn btn-primary" type="submit" (click)="onEdit()">Submit</button> &nbsp;
-                            <button class="btn btn-info active" type="button"  (click)= "goBack()">Go Back</button> &nbsp;
-                        </div>
-                        <p *ngIf="error" class="alert alert-danger my-2 text-center">{{errMsg}}</p>
-                         <button type="button" class="btn btn-outline-danger mt-3" id="deleteBtn" (click)="onDelete()">Delete Account</button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="text-center">
+                        <!-- Submit button with click event to edit users email-->
+                        <button id="editBtn" class="btn btn-primary" type="submit" (click)="onEdit()">Submit</button> &nbsp;
+                        <!-- Go back button-->
+                        <button class="btn btn-info active" type="button" (click)="goBack()">Go Back</button> 
+                    </div>
+                    <!-- Error-->
+                    <p *ngIf="error" class="alert alert-danger my-2 text-center">{{errMsg}}</p>
+                    <button type="button" class="btn btn-outline-danger mt-2" id="deleteBtn" (click)="onDelete()">Delete Account</button>
+                </form>
             </div>
-        </section>
-    </main>
- 
+        </div>
+    </section>
+</main>

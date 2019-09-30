@@ -1,8 +1,6 @@
-
 const User = require("../db/connection").Users;
-
 var userService = {};
-
+// Lists users that are not admin 
 userService.list = () => {
     return User.findAll( {where:{ is_admin:"0"}})
         .then(users => {
@@ -13,7 +11,7 @@ userService.list = () => {
         })
 };
 
-
+// Lists user by Id
 userService.listUser = (userId) => {
     return User.findByPk(userId)
         .then(user => {
@@ -24,6 +22,7 @@ userService.listUser = (userId) => {
         })
 };
 
+// Register a User
 userService.register = (userObj) => {
     return User
         .create(userObj)
@@ -35,6 +34,7 @@ userService.register = (userObj) => {
         })
 };
 
+ // Update email from user 
 userService.update = (userId, userObj) => {
     return User.update(userObj, {returning: true, where: { ID: userId } })
         .then(user => {
@@ -44,6 +44,8 @@ userService.update = (userId, userObj) => {
             throw error;
         })
 };
+
+// Delete User 
 
 userService.delete = (userId) => {
     return User.destroy({ where: { ID: userId } })
@@ -55,7 +57,7 @@ userService.delete = (userId) => {
         });
 };
 
-
+// Login verification 
 userService.login =(userObj) => {
     return User.findOne({
             where: {
