@@ -24,13 +24,11 @@
 
                         <div class="text-center">
                             <button id="editBtn" class="btn btn-primary" type="submit" (click)="onEdit()">Submit</button> &nbsp;
-                            <a href="/leagues" class="btn btn-info active" role="button" aria-pressed="true" id="returnBtn">Go
-                                Back</a> &nbsp;
-                            <button type="reset" class="btn btn-danger" id="resetBtn">Reset</button>
+                            <button class="btn btn-info active" type="button"  (click)= "goBack()">Go
+                                Back</button> &nbsp;
                         </div>
-                        <p class="alert alert-danger my-2 text-center hide" id="msg"></p>
-                         <button type="button" class="btn btn-outline-danger mt-3" id="deleteBtn">Delete Account</button>
-
+                        <p *ngIf="error" class="alert alert-danger my-2 text-center">{{errMsg}}</p>
+                         <button type="button" class="btn btn-outline-danger mt-3" id="deleteBtn" (click)="onDelete()">Delete Account</button>
                     </form>
                 </div>
             </div>

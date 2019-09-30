@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router, ActivatedRoute } from '@angular/router';
-
 import { UserService } from './../providers/user.service';
 
 @Component({
@@ -18,7 +16,7 @@ export class EditComponent implements OnInit {
   email: string = '';
 
   errMsg: string = '';
-  errorFound: boolean = false;
+  error: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -27,6 +25,9 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (!this.userService.getAuthStatus()) {
+      this.router.navigate(['/']);
+    }
 
   this.sub = this.route
       .queryParams
@@ -40,24 +41,36 @@ export class EditComponent implements OnInit {
       })
     }
 
-onEdit(): void{
+ onEdit(): void{
   if (this.email.trim() == '') {
     this.errMsg = 'Email Address required';
-    this.errorFound = true;
+    this.error = true;
   } else {
-    this.errorFound = false;
+    this.error = false;
     this.errMsg = '';
     this.userService.editUsers(this.userid,this.email).subscribe(data => {
-      if (data['errorFound']) {
-        this.errMsg = 'Update unsuccessful.';
-        this.errorFound = true;
+      if (data['error']) {
+        this.errMsg = 'Error unable to update';
+        this.error = true;
       } else {
         this.userService.getUser(this.userid).subscribe(data => {
-          this.username = data['username'];
           this.email =  data['email'];
         })
       }
     });
   }
+}
+
+onDelete():void{
+  this.userService.deleteUser(this.userid).subscribe(data => {
+    this.userService.setAuthStatus(false);
+    this.router.navigate(['/']);
+  });
+}
+
+goBack(): void {
+  this.router.navigate(['leagues'], {
+    queryParams: { userid: this.userid }
+  })
 }
 }

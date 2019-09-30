@@ -28,7 +28,7 @@ export class UserService {
   }
 
   deleteUser(userId: number) {
-    return this.http.delete(`${this.usersEndpoint}${userId}`, this.httpOptions)
+    return this.http.delete(`${this.usersEndpoint}delete/${userId}`, this.httpOptions)
       .pipe(map(res => <any[]>res));
   }
 
