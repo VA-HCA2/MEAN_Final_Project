@@ -30,23 +30,23 @@ export class NavComponent implements OnInit {
   onIndex(): void {
     this.router.navigate(['/']);
   }
-
-  onLogin(): void {
-    this.router.navigate(['/login']);
-  }
-
   onRegister(): void {
     this.router.navigate(['/register']);
   }
 
-  onEdit(): void {
-    this.router.navigate(['/edit'], {
-      queryParams: { userid: this.userid }
-    })
+  onLogin(): void {
+    this.router.navigate(['/login']);
   }
 
   onLogOut(): void {
     this.userService.setAuthStatus(false);
     this.router.navigate(['/']);
   }
+  onEdit(): void {
+    this.router.navigate(['/edit'], {
+      queryParams: { userid: this.userid }
+    })
+  }
+
+
 }
