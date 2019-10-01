@@ -1,4 +1,4 @@
--- drop database hca;
+drop database hca;
 create database hca;
 use hca;
 
@@ -20,3 +20,6 @@ insert into USERS (NAME, PASSWORD, email, is_admin) values ('Maria', '11111111',
 insert into USERS (NAME, PASSWORD, email, is_admin) values ('Sonia', '1245645', 'sonia@yahoo.com', 0);
 
 select * from users;
+#SELECT * FROM users WHERE id = 1;
+#SELECT * FROM users WHERE is_admin = 1;
+#SELECT * FROM users WHERE NAME = 'Paulina';
