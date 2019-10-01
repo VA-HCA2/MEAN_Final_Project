@@ -1,4 +1,4 @@
-### Soccer Academy
+# Soccer Academy
 
 - The purpose of this page is to give users information about a soccer academy. With the ability to register for the site, edit the user account, delete the account and see a list of the teams. 
 

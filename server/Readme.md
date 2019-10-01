@@ -30,13 +30,14 @@
 
 + Get request : http://localhost:3000/users/id 
 
-![](../client/src/assets/images/listuserrequest.PNG)
+![](../client/src/assets/images/listusergetrequest.PNG)
+
 
 Edit email put request:
 
 + Get request : http://localhost:3000/users/edit/2
 
-![](../client/src/assets/images/editputrequest.PNG)
+![](../client/src/assets/images/editputtrequest.PNG)
 
 + Delete : http://localhost:3000/users/delete/id
 
