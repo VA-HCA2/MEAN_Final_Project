@@ -47,6 +47,7 @@
 - Enter http://localhost:4200/  in the browser to navigate to the page.
 
 ### Main page of Soccer Academy
-![Soccer Academy](public/images/indexSnippet.PNG?raw=true "Socccer Academy")
-![Soccer Academy](public/images/indexSnippet2.PNG?raw=true "Socccer Academy")
-![Soccer Academy](public/images/indexSnippet3.PNG?raw=true "Socccer Academy")
+
+![](/client/src/assets/images/indexSnippet.PNG)
+![](/client/src/assets/images/indexSnippet2.PNG)
+![](/client/src/assets/images/indexSnippet3.PNG)
