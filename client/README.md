@@ -22,7 +22,7 @@
 * Register http://localhost:4200/register
 * Leagues  http://localhost:4200/leagues
 * Admin  http://localhost:4200/admin
-* Edit  http://localhost:4200/edit.
+* Edit  http://localhost:4200/edit
 
 In order to navigate the pages the user has to be signed up so the id can be tranferred from page to page.
 
