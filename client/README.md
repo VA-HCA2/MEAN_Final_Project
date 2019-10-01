@@ -1,3 +1,38 @@
+### Soccer Academy
+
+- The client side of the the site was created using Angular.
+
+### Install Angular CLI
+  + npm install -g @angular/cli@latest
+  + ng --version
+
+#### Run App
+
+* cd demo
+* ng serve
+
+#### Load App
+
++ http://localhost:4200/
+
+#### Site Pages
+
+* Home  http://localhost:4200/
+* Login  http://localhost:4200/login
+* Register http://localhost:4200/register
+* Leagues  http://localhost:4200/leagues
+* Admin  http://localhost:4200/admin
+* Edit  http://localhost:4200/edit.
+
+In order to navigate the pages the user has to be signed up so the id can be tranferred from page to page.
+
+### Features
+
++ Some features include:
+
+    + The user has to be signed up for the site in order to see the teams information.
+    + A user that is not an Admin is not authorized to see the admin page with the list of users.
+    
 # Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
@@ -6,21 +41,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
